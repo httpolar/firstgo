@@ -17,6 +17,10 @@ type CatImage struct {
 	Height int    `json:"height,omitempty"`
 }
 
+func (catImage CatImage) Println() {
+	fmt.Printf("ID: %s\nURL: %s\nWidth: %v\nHeight: %v\n", catImage.ID, catImage.URL, catImage.Width, catImage.Height)
+}
+
 func GetCatUrl(ch chan<- CatImage, wg *sync.WaitGroup) CatImage {
 	defer wg.Done()
 
@@ -52,8 +56,4 @@ func GetCatUrl(ch chan<- CatImage, wg *sync.WaitGroup) CatImage {
 
 	ch <- cats[0]
 	return cats[0]
-}
-
-func PrintCat(catImage *CatImage) {
-	fmt.Printf("ID: %s\nURL: %s\nWidth: %v\nHeight: %v\n", catImage.ID, catImage.URL, catImage.Width, catImage.Height)
 }

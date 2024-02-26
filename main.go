@@ -20,6 +20,6 @@ func main() {
 	}()
 
 	for catImage := range ch {
-		cats.PrintCat(&catImage)
+		catImage.Println()
 	}
 }
